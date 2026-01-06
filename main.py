@@ -1,6 +1,6 @@
 from GameEngine import GameEngine
 from RandomPlayer import RandomPlayer
-from ThirtyOne.ThirtyOneDEENPlayer import Algorithmic31BotV5
+from ThirtyOne.ThirtyOneDEENPlayer import ThirtyOneDeenPlayer
 from TiePlayer import TiePlayer
 
 from ThirtyOne.ThirtyOneCPUPlayerAdapter import ThirtyOneCPUPlayerAdapter
@@ -10,7 +10,7 @@ from ThirtyOne.ThirtyOneBoard import ThirtyOneBoard
 #player1 = ThirtyOneHumanPlayer("Dr. Dong")
 player1 = RandomPlayer("Random bot 1")
 player2 = RandomPlayer("Random bot 2")
-player3 = ThirtyOneCPUPlayerAdapter(Algorithmic31BotV5())
+player3 = ThirtyOneCPUPlayerAdapter(ThirtyOneDeenPlayer())
 
 board = ThirtyOneBoard([player1, player2, player3])
 
