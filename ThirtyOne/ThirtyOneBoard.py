@@ -3,6 +3,7 @@ from ThirtyOne.DeckOfCards import DeckOfCards
 from enum import Enum
 from ThirtyOne.ThirtyOneMove import ThirtyOneDrawChoiceMove
 from ThirtyOne.ThirtyOneMove import ThirtyOneDiscardMove
+import random
 
 from TiePlayer import TiePlayer
 
@@ -25,6 +26,7 @@ class ThirtyOneBoard(GameState):
         self.deck = DeckOfCards()
         self.deck.initialize_deck()
         self.discard = DeckOfCards()
+        self.move_storage = []
 
         # Deal initial hands
         for _ in range(3):
@@ -44,6 +46,7 @@ class ThirtyOneBoard(GameState):
         newBoard.current_player = self.current_player
         newBoard.current_turn_type = self.current_turn_type
         newBoard.player_who_knocked = self.player_who_knocked
+        newBoard.move_storage = [string for string in self.move_storage]
         return newBoard
     
     def getPossibleMoves(self):       
@@ -78,24 +81,28 @@ class ThirtyOneBoard(GameState):
                 return False
             return True
 
+    def special_print(self, string):
+        print(string)
+        self.move_storage.append(string)
+
     def doMove(self, move):
         if isinstance(move, ThirtyOneDrawChoiceMove):
             if move.choice == ThirtyOneDrawChoiceMove.Choice.DRAW_FROM_DECK:
                 self.hands[self.current_player].append(self.deck.draw_card())
                 self.current_turn_type = ThirtyOneBoard.TurnType.DISCARD
-                print (f"{self.current_player.name} drew from deck.")
+                self.special_print (f"{self.current_player.name} drew from deck.")
             elif move.choice == ThirtyOneDrawChoiceMove.Choice.DRAW_FROM_DISCARD:
                 self.hands[self.current_player].append(self.discard.cards.pop())
                 self.current_turn_type = ThirtyOneBoard.TurnType.DISCARD
-                print (f"{self.current_player.name} drew from discard pile.")
+                self.special_print (f"{self.current_player.name} drew from discard pile.")
             elif move.choice == ThirtyOneDrawChoiceMove.Choice.KNOCK:
                 self.player_who_knocked = self.players.index(self.current_player)
-                print (f"{self.current_player.name} has knocked.")
+                self.special_print (f"{self.current_player.name} has knocked.")
                 self.current_player = self.next_player()
         else:
             self.hands[self.current_player].remove(move.card)
             self.discard.add_card(move.card)
-            print (f"{self.current_player.name} discarded {move.card}.")
+            self.special_print (f"{self.current_player.name} discarded {move.card}.")
             self.current_player = self.next_player()
             self.current_turn_type = ThirtyOneBoard.TurnType.DRAW_CHOICE
 
@@ -105,6 +112,8 @@ class ThirtyOneBoard(GameState):
                 self.deck.cards.append(card)
             self.deck.cards.pop()
             self.discard.cards = [self.discard.cards[-1]]
+            random.shuffle(self.deck.cards)
+            self.special_print("Shuffled the deck.")
 
         return self
     
