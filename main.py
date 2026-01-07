@@ -44,7 +44,7 @@ def run_game(players):
     return scores
 
 def default_run():
-    player1 = SuperTicTacToeHumanPlayer("Dr. Dong")
+    player1 = SuperTicTacToeYOURNAMEPlayer("Dr. Dong")
     player2 = SuperTicTacToeYOURNAMEPlayer()
     
     run_game([player1, player2])
