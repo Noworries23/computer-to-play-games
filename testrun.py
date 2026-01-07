@@ -42,6 +42,7 @@ def run_test_suite(num_games=100):
         # Optional: Print progress every 10 games
         if (i + 1) % 1 == 0:
             print(f"Completed {i + 1}/{num_games} games...")
+            print(stats)
 
     # Calculate Results
     win_rate = (stats["wins"] / num_games) * 100

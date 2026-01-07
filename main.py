@@ -4,7 +4,8 @@ from TiePlayer import TiePlayer
 
 from SuperTicTacToe.SuperTicTacToeBoard import SuperTicTacToeBoard
 from SuperTicTacToe.SuperTicTacToeHumanPlayer import SuperTicTacToeHumanPlayer
-from SuperTicTacToe.SuperTicTacToeYOURNAMEPlayer import SuperTicTacToeYOURNAMEPlayer
+from SuperTicTacToe.SuperTicTacToeYOURNAMEPlayer import SuperTicTacToeYOURNAMEPlayer 
+from SuperTicTacToe.SuperTicTacToeDeenPlayer import SuperTicTacToeDeenPlayer 
 
 #import all files in ThirtyOne/StudentFiles here
 
@@ -44,7 +45,7 @@ def run_game(players):
     return scores
 
 def default_run():
-    player1 = SuperTicTacToeYOURNAMEPlayer("Dr. Dong")
+    player1 = SuperTicTacToeDeenPlayer()
     player2 = SuperTicTacToeYOURNAMEPlayer()
     
     run_game([player1, player2])
