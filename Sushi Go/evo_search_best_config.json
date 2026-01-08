@@ -1,0 +1,18 @@
+{
+  "best_config": {
+    "Type.DOUBLE_MAKI": 8,
+    "Type.EGG_NIGIRI": 2,
+    "Type.SALMON_NIGIRI": 3,
+    "Type.PUDDING": 4,
+    "Type.SINGLE_MAKI": 10,
+    "Type.CHOPSTICKS": 6,
+    "Type.DUMPLING": 10,
+    "Type.TRIPLE_MAKI": 8,
+    "Type.SASHIMI": 9,
+    "Type.WASABI": 10,
+    "Type.TEMPURA": 11,
+    "Type.SQUID_NIGIRI": 12
+  },
+  "best_win_rate": 0.6666666666666666,
+  "method": "evolutionary_algorithm"
+}
